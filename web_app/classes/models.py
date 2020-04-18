@@ -41,5 +41,5 @@ class SportClass(models.Model):
 
 class Attendance(models.Model):
     student = models.ForeignKey("Student", on_delete=models.CASCADE)
-    sport_class = models.ForeignKey("SportClass", on_delete=models.CASCADE)
+    sport_class = models.ForeignKey("SportClass", on_delete=models.SET_NULL, null=True)
     presence = models.BooleanField(default=False, verbose_name="Was the student present in the class?")
