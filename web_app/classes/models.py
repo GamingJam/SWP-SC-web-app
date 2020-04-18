@@ -24,7 +24,7 @@ class HealthGroup(models.Model):
     name = models.CharField(max_length=20)
 
 
-class Group(models.Model):
+class SportGroup(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     max_student_number = models.PositiveSmallIntegerField(default=20)
@@ -34,7 +34,7 @@ class Group(models.Model):
 
 
 class SportClass(models.Model):
-    group = models.ForeignKey("Group", on_delete=models.CASCADE)
+    group = models.ForeignKey("SportGroup", on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Date and time of the sport class")
     duration = models.DurationField(default=timedelta(hours=1, minutes=30), verbose_name="Duration of the class")
 
