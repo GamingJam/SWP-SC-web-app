@@ -44,7 +44,7 @@ class HealthGroup(models.Model):
 
 class SportGroup(models.Model):
     name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, null=True, blank=True)
     max_student_number = models.PositiveSmallIntegerField(default=20)
     trainers = models.ManyToManyField("Trainer", verbose_name="Trainers of the group")
     students = models.ManyToManyField("Student", verbose_name="Students enrolled in the group")
