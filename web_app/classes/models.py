@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import timedelta
+from django.utils.timezone import localtime
 
 
 class Student(models.Model):
@@ -63,7 +64,7 @@ class SportClass(models.Model):
     duration = models.DurationField(default=timedelta(hours=1, minutes=30), verbose_name="Duration of the class")
 
     def __str__(self):
-        return str(self.group) + " on " + self.date.strftime("%d %B, %H:%M")
+        return str(self.group) + " on " + localtime(self.date).strftime("%d %B, %H:%M")
 
     class Meta:
         verbose_name_plural = 'sport classes'
