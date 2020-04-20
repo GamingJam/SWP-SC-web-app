@@ -36,3 +36,9 @@ def sport_group(request, pk):
 
     context = {'group': group}
     return render(request, 'classes/group.html', context)
+
+
+def groups(request):
+    groups = SportGroup.objects.all()
+    context = {'groups': groups}
+    return render(request, 'classes/groups.html', context)
