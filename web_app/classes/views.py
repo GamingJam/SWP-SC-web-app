@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from .models import *
 
 
 def index(request):
@@ -22,3 +23,8 @@ def register(request):
 def login(request):
     context = {}
     return render(request, 'classes/login.html', context)
+
+
+def classes_schedule(request):
+    classes = SportClass.objects.all()
+    return render(request, 'classes/classes_schedule.html', {'classes': classes})

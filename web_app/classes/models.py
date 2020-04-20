@@ -67,12 +67,18 @@ class SportClass(models.Model):
     date = models.DateTimeField(verbose_name="Date and time of the sport class")
     duration = models.DurationField(default=timedelta(hours=1, minutes=30), verbose_name="Duration of the class")
 
+    def str_date(self):
+        return localtime(self.date).strftime("%d %B")
+
+    def str_time(self):
+        return localtime(self.date).strftime("%H:%M")
+
     def __str__(self):
-        return str(self.group) + " on " + localtime(self.date).strftime("%d %B, %H:%M")
+        return str(self.group) + " on " + self.str_date() + ", " + self.str_time()
 
     class Meta:
         verbose_name_plural = 'sport classes'
-        ordering = ['id']
+        ordering = ['date', 'group']
 
 
 class Attendance(models.Model):
