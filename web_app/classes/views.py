@@ -27,4 +27,12 @@ def login(request):
 
 def classes_schedule(request):
     classes = SportClass.objects.all()
-    return render(request, 'classes/classes_schedule.html', {'classes': classes})
+    context = {'classes': classes}
+    return render(request, 'classes/classes_schedule.html', context)
+
+
+def sport_group(request, pk):
+    group = SportGroup.objects.get(id=pk)
+
+    context = {'group': group}
+    return render(request, 'classes/group.html', context)

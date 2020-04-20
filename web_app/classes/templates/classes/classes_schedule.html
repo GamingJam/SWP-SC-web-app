@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Classes</title>
+    <title>Schedule of classes</title>
     <style>
         table, th, td {
           border: 1px solid black;
@@ -25,9 +25,9 @@
         <tr>
             <th>{{class.str_date}}</th>
             <th>{{class.str_time}}</th>
-            <th>{{class.group}}</th>
+            <th><a href="{% url 'sport_group' class.group.id%}"> {{class.group}} </a></th>
         </tr>
         {% endfor %}
-    <table>
+    </table>
 </body>
 </html>
