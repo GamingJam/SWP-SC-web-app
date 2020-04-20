@@ -17,6 +17,7 @@ class Student(models.Model):
 
     class Meta:
         verbose_name_plural = 'students'
+        ordering = ['id']
 
 
 class Trainer(models.Model):
@@ -31,6 +32,7 @@ class Trainer(models.Model):
 
     class Meta:
         verbose_name_plural = 'trainers'
+        ordering = ['id']
 
 
 class HealthGroup(models.Model):
@@ -41,6 +43,7 @@ class HealthGroup(models.Model):
 
     class Meta:
         verbose_name_plural = 'health groups'
+        ordering = ['id']
 
 
 class SportGroup(models.Model):
@@ -56,6 +59,7 @@ class SportGroup(models.Model):
 
     class Meta:
         verbose_name_plural = 'sport groups'
+        ordering = ['id']
 
 
 class SportClass(models.Model):
@@ -68,6 +72,7 @@ class SportClass(models.Model):
 
     class Meta:
         verbose_name_plural = 'sport classes'
+        ordering = ['id']
 
 
 class Attendance(models.Model):
@@ -80,3 +85,4 @@ class Attendance(models.Model):
 
     class Meta:
         verbose_name_plural = 'attendance'
+        ordering = ['id']
