@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule of classes</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schedule of classes</h1>
+    <table style="width:100%">
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Group</th>
+        </tr>
+        {% for class in classes %}
+        <tr>
+            <th>{{class.str_date}}</th>
+            <th>{{class.str_time}}</th>
+            <th><a href="{% url 'sport_group' class.group.id%}"> {{class.group}} </a></th>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
