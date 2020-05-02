@@ -20,7 +20,7 @@ class StudentProfile(models.Model):
     health_group = models.ForeignKey('classes.HealthGroup', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return str(self.user)
+        return self.user.get_full_name()
 
     class Meta:
         ordering = ['user']
@@ -30,7 +30,7 @@ class TrainerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
-        return str(self.user)
+        return self.user.get_full_name()
 
     class Meta:
         ordering = ['user']
