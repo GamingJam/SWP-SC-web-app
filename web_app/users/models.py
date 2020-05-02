@@ -2,14 +2,22 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from .managers import CustomUserManager
 
 
 class User(AbstractUser):
+    username = None
+    email = models.EmailField('email address', unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    objects = CustomUserManager()
+
     is_student = models.BooleanField('student status', default=False)
     is_trainer = models.BooleanField('trainer status', default=False)
 
     def __str__(self):
-        return self.username
+        return self.email
 
     class Meta:
         ordering = ['id']
@@ -20,7 +28,7 @@ class StudentProfile(models.Model):
     health_group = models.ForeignKey('classes.HealthGroup', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.user.get_full_name()
+        return str(self.user)
 
     class Meta:
         ordering = ['user']
@@ -30,7 +38,7 @@ class TrainerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
-        return self.user.get_full_name()
+        return str(self.user)
 
     class Meta:
         ordering = ['user']
