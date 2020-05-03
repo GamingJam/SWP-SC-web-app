@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Home page</h2>
+    Hello, {{user}}
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+        <li><a href="{% url 'classes_schedule' %}">Schedule of classes</a></li>
+        <li><a href="{% url 'sport_groups' %}">Sport groups</a></li>
+    </ul>
+{% endblock %}
