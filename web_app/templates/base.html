@@ -5,6 +5,14 @@
     <title>{% block title %}Sport course{% endblock %}</title>
 </head>
 <body>
+    {% if user.is_staff %}
+        Hello, admin {{ user }}
+    {% elif user.is_student %}
+        Hello, student {{ user }}
+    {% elif user.is_trainer %}
+        Hello, trainer {{ user }}
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </body>
