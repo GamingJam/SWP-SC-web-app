@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <h2> Profile </h2>
+
+    {% if user.is_staff %}
+        Hello, admin!
+    {% elif user.is_student %}
+        Hello, student!
+    {% elif user.is_trainer %}
+        Hello, trainer!
+    {% endif %}
+    <br>
+    Your email address is {{ user }}
+    <br>
+    {% if user.is_student %}
+        Your health group is "{{ user.studentprofile.health_group }}"
+        <br>
+        {% if not user.studentprofile.sport_group is None %}
+            Your sport group is
+            <a href="{% url 'sport_group' user.studentprofile.sport_group.id  %}"> {{ user.studentprofile.sport_group }} </a>
+        {% endif %}
+    {% endif %}
+
+
+{% endblock %}

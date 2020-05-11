@@ -30,6 +30,9 @@ class StudentProfile(models.Model):
     def __str__(self):
         return str(self.user)
 
+    def sport_group(self):
+        return self.sportgroup_set.first()
+
     class Meta:
         ordering = ['user']
 
