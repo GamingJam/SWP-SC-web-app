@@ -19,6 +19,12 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
+    def display_name(self):
+        if (full_name := self.get_full_name()) == '':
+            return self.email
+        else:
+            return full_name
+
     class Meta:
         ordering = ['id']
 

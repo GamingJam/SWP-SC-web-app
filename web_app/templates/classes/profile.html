@@ -5,13 +5,7 @@
 {% block content %}
     <h2> Profile </h2>
 
-    {% if user.is_staff %}
-        Hello, admin!
-    {% elif user.is_student %}
-        Hello, student!
-    {% elif user.is_trainer %}
-        Hello, trainer!
-    {% endif %}
+    Hello, {{ user.display_name }}!
     <br>
     Your email address is {{ user }}
 

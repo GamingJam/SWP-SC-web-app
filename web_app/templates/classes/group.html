@@ -9,6 +9,6 @@
     {{group.description}}
     <h3>Trainers</h3>
     {% for trainer in group.trainers.all %}
-        {{trainer}}<br>
+        {{ trainer.user.get_full_name }}, {{ trainer.user.email }}<br>
     {% endfor %}
 {% endblock %}
