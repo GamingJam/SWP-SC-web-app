@@ -28,10 +28,16 @@ class StudentProfile(models.Model):
     health_group = models.ForeignKey('classes.HealthGroup', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.get_full_name())
 
     def sport_group(self):
         return self.sportgroup_set.first()
+
+    def email(self):
+        return self.user.email
+
+    def full_name(self):
+        return self.user.get_full_name()
 
     class Meta:
         ordering = ['user']
@@ -45,6 +51,12 @@ class TrainerProfile(models.Model):
 
     def sport_group(self):
         return self.sportgroup_set.first()
+
+    def email(self):
+        return self.user.email
+
+    def full_name(self):
+        return self.user.get_full_name()
 
     class Meta:
         ordering = ['user']
