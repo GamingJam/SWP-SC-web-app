@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Groups</title>
-    <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 15px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Groups</h1>
+{% extends 'base.html' %}
+
+{% block title %} Groups {% endblock %}
+
+{% block style %}
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+    }
+{% endblock %}
+
+{% block content %}
+    <h2>Groups</h2>
     <table style="width:100%">
         <tr>
             <th>Group</th>
@@ -27,5 +26,4 @@
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

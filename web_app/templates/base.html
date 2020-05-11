@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Sport course{% endblock %}</title>
+    <title> {% block title %} Sport course {% endblock %} </title>
+    <style> {% block style %} {% endblock %} </style>
 </head>
 <body>
+    {% if not user.is_authenticated %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}">Profile</a>
+    {% endif %}
+
+    <a href="{% url 'classes_schedule' %}">Schedule of classes</a>
+    <a href="{% url 'sport_groups' %}">Sport groups</a>
+
     {% if user.is_staff %}
-        Hello, admin {{ user }}
-    {% elif user.is_student %}
-        Hello, student {{ user }}
-    {% elif user.is_trainer %}
-        Hello, trainer {{ user }}
+        <a href="{% url 'admin:index' %}">Admin menu</a>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
     {% endif %}
 
     {% block content %}

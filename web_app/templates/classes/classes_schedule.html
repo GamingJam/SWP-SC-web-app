@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Schedule of classes</title>
-    <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 15px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Schedule of classes</h1>
+{% extends 'base.html' %}
+
+{% block title %} Schedule of classes {% endblock %}
+
+{% block style %}
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+    }
+{% endblock %}
+
+{% block content %}
+    <h2>Schedule of classes</h2>
     <table style="width:100%">
         <tr>
             <th>Date</th>
@@ -29,5 +28,4 @@
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}
