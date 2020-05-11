@@ -14,13 +14,26 @@
     {% endif %}
     <br>
     Your email address is {{ user }}
-    <br>
+
     {% if user.is_student %}
+        <br>
         Your health group is "{{ user.studentprofile.health_group }}"
         <br>
         {% if not user.studentprofile.sport_group is None %}
             Your sport group is
-            <a href="{% url 'sport_group' user.studentprofile.sport_group.id  %}"> {{ user.studentprofile.sport_group }} </a>
+            <a href="{% url 'sport_group' user.studentprofile.sport_group.id  %}">
+                {{ user.studentprofile.sport_group }}
+            </a>
+        {% endif %}
+    {% endif %}
+
+    {% if user.is_trainer %}
+        <br>
+        {% if not user.trainerprofile.sport_group is None %}
+            Your sport group is
+            <a href="{% url 'sport_group' user.trainerprofile.sport_group.id  %}">
+                {{ user.trainerprofile.sport_group }}
+            </a>
         {% endif %}
     {% endif %}
 
