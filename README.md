@@ -3,17 +3,18 @@ Web app for students and university staff that allows to keep track of hours vis
 
 ### Web application
 Folder contains sport course web application on `Django version 3.0.5`.\
-To run the server use the following command: `python manage.py runserver`
+To run the server use the following command: `python manage.py runserver`.\
+Then, open the web application at `http://127.0.0.1:8000/`.
 
-### Django admin menu
-login: `admin` \
+### Django users
+#### Admir
+email: `admin@example.com`\
 password: `admin`
-
-### Database setup (postgresql)
-```
-postgres=# CREATE DATABASE sport_course;
-postgres=# CREATE USER sport_course_user WITH PASSWORD 'password';
-postgres=# ALTER ROLE sport_course_user SET client_encoding to 'utf8';
-postgres=# ALTER ROLE sport_course_user SET timezone TO 'UTC+3';
-postgres=# GRANT ALL PRIVILEGES ON DATABASE sport_course TO sport_course_user;
-```
+#### Students
+email: `studentX@example.com`\
+password: `studentX`\
+where X is a number `1..7`
+#### Trainers
+email: `trainerX@example.com`\
+password: `trainerX`\
+where X is a number `1..3`
