@@ -14,7 +14,8 @@
         <a href="{% url 'profile' %}">Profile</a>
     {% endif %}
 
-    <a href="{% url 'classes_schedule' %}">Schedule of classes</a>
+    <a href="{% url 'classes' %}">Classes</a>
+
     <a href="{% url 'sport_groups' %}">Sport groups</a>
 
     {% if user.is_staff %}

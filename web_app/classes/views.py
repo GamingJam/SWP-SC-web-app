@@ -10,8 +10,24 @@ def home(request):
         return redirect('login')
 
 
-def classes_schedule(request):
+def classes_page(request):
+    return redirect('all_classes_schedule')
+
+
+def all_classes_schedule(request):
     classes = SportClass.objects.all()
+    context = {'classes': classes}
+    return render(request, 'classes/classes_schedule.html', context)
+
+
+@login_required
+def my_classes_schedule(request):
+    if request.user.is_student:
+        classes = SportClass.objects.filter(group__students__in=[request.user.studentprofile])
+    elif request.user.is_trainer:
+        classes = SportClass.objects.filter(group__trainers__in=[request.user.trainerprofile])
+    else:
+        return redirect('home')
     context = {'classes': classes}
     return render(request, 'classes/classes_schedule.html', context)
 
